@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetchTopSongs(localStorage.getItem('accessToken'), 'medium_term');
+    fetchTopSongs(sessionStorage.getItem('accessToken'), 'medium_term');
 });
 
 const fetchTopSongs = (token, timeRange) => {
