@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     //CLAVE API Y LINK REDIRECCIÓN LUEGO DEL LOGIN
-    const CLIENT_ID = mykey;
+    const CLIENT_ID = MYKEY;
     const REDIRECT_URI = 'https://ebrss.github.io/descubre-tu-spotify/sections/topSongs.html';
 
 
