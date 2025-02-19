@@ -2,15 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const CLIENT_ID = "4c492a9b95534c7a9a022fdc563c4f71";
     const REDIRECT_URI = 'https://ebrss.github.io/descubre-tu-spotify/sections/recentSongs.html';
 
-
     const loginButton = document.getElementById('login');
     const scopes = 'user-read-recently-played user-read-private user-top-read';
 
-    //SE GUARDA EL TOKEN DE LA URL Y LUEGO SE ALMACENA LOCALMENTE
     const getTokenFromURL = () => {
         const hash = window.location.hash.substring(1);
+        console.log('Hash:', hash); 
         const params = new URLSearchParams(hash);
-        return params.get('access_token');
+        const token = params.get('access_token');
+        console.log('Access Token:', token); 
+        return token;
     };
 
     const fetchUserInfo = (token) => {
@@ -41,10 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem('accessToken', accessToken);
         fetchUserInfo(accessToken);
         window.location = `sections/recentSongs.html`;
-    } 
+    } else {
+        console.error('Access token not found in URL');
+    }
 
     loginButton.addEventListener('click', () => {
         window.location = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${scopes}&response_type=token&show_dialog=true`;
     });
 });
-
