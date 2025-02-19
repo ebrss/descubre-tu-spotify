@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (accessToken) {
         localStorage.setItem('accessToken', accessToken);
         fetchUserInfo(accessToken);
-        window.location = 'sections/recentSongs.php';
+        window.location = 'sections/recentSongs.html';
     } 
 
     loginButton.addEventListener('click', () => {
