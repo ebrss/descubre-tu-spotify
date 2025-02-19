@@ -6,13 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const scopes = 'user-read-recently-played user-read-private user-top-read';
 
     const getTokenFromURL = () => {
-        const hash = window.location.hash.substring(1);
-        console.log('Hash:', hash); 
-        const params = new URLSearchParams(hash);
-        const token = params.get('access_token');
-        console.log('Access Token:', token); 
-        return token;
+        const urlParams = new URLSearchParams(window.location.hash.substring(1));
+        return urlParams.get('access_token');
     };
+
 
     const fetchUserInfo = (token) => {
         fetch('https://api.spotify.com/v1/me', {
