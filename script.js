@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const CLIENT_ID = "4c492a9b95534c7a9a022fdc563c4f71";
-    const REDIRECT_URI = 'https://ebrss.github.io/descubre-tu-spotify/sections/topSongs.html';
+    const REDIRECT_URI = 'https://ebrss.github.io/descubre-tu-spotify/sections/recentSongs.html';
 
 
     const loginButton = document.getElementById('login');
