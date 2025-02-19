@@ -6,9 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const scopes = 'user-read-recently-played user-read-private user-top-read';
 
     const getTokenFromURL = () => {
-        const urlParams = new URLSearchParams(window.location.hash.substring(1));
-        return urlParams.get('access_token');
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash.replace(/&/g, '&'));
+    return params.get('access_token');
     };
+
 
 
     const fetchUserInfo = (token) => {
