@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'GothamMedium';
+  src: url('GothamMedium.ttf') format('truetype');
+}
+
+*{
+    font-family: 'GothamMedium', sans-serif;;
+}
+
+body {
+    text-align: center;
+    background-color: #303443;
+}
+
+.container {
+    max-width: 80%;
+    margin: 10vh auto;
+    padding: 20px;
+    background-color: #5E6273  ;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #fff;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #1db954;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1ed760;
+}
+
+.navbar-brand{
+    color: #C396EB;
+}
+
+#song-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+}
+
+.card {
+    width: 30% !important;
+    margin-top: 2vh ;
+    margin-left: 1vh;
+}
+
+a{
+    color: black;
+    font-weight: bold;
+}
+
+.subtituloINDEX{
+    margin-bottom:15vh;
+}
+
+.table{
+    background-color: #5E6273;
+}
+}
