@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const userID = data.id;
             const photoUrl = data.images && data.images.length > 0 ? data.images[0].url : null;
             
-            localStorage.setItem('userName', userName);
-            localStorage.setItem('country', country);
-            localStorage.setItem('photo', photoUrl);
-            localStorage.setItem('userID', userID);
+            sessionStorage.setItem('userName', userName);
+            sessionStorage.setItem('country', country);
+            sessionStorage.setItem('photo', photoUrl);
+            sessionStorage.setItem('userID', userID);
             
         })
         .catch(error => console.error('Error:', error));
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const accessToken = getTokenFromURL();
 
     if (accessToken) {
-        localStorage.setItem('accessToken', accessToken);
+        sessionStorage.setItem('accessToken', accessToken);
         fetchUserInfo(accessToken);
         window.location = `sections/recentSongs.html`;
     } 
