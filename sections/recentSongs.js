@@ -65,22 +65,3 @@ const fetchRecentSongs = (token) => {
     })
     .catch(error => console.error('Error:', error));
 };
-
-const sendUserDataToServer = (userID, userName, country, photo, songs) => {
-    const formData = new FormData();
-    formData.append('userId', userID);
-    formData.append('userName', userName);
-    formData.append('country', country);
-    formData.append('photo', photo);
-    formData.append('songs', JSON.stringify(songs));
-
-    fetch('https://descubretuspotify.000webhostapp.com/sections/conexion.php', {
-        method: 'POST',
-        body: formData,
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => console.error('Error:', error));
-};
