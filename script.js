@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (accessToken) {
         localStorage.setItem('accessToken', accessToken);
         fetchUserInfo(accessToken);
-        window.location = 'sections/recentSongs.html';
+        window.location = `sections/recentSongs.html?access_token=${accessToken}`;
     } 
 
     loginButton.addEventListener('click', () => {
