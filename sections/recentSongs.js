@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    const accessToken = localStorage.getItem('accessToken');
+    const accessToken = sessionStorage.getItem('accessToken');
 
 
     if (accessToken) {
@@ -21,10 +21,10 @@ const fetchRecentSongs = (token) => {
         const welcomeTitle = document.getElementById('welcome-title');
         const songList = document.getElementById('song-list');
         
-        const userName = localStorage.getItem('userName');
-        const country = localStorage.getItem('country');
-        const photo = localStorage.getItem('photo');
-        const userID = localStorage.getItem('userID');
+        const userName = sessionStorage.getItem('userName');
+        const country = sessionStorage.getItem('country');
+        const photo = sessionStorage.getItem('photo');
+        const userID = sessionStorage.getItem('userID');
     
         sendUserDataToServer(userID, userName, country, photo, data.items);
 
