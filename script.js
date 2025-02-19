@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     //CLAVE API Y LINK REDIRECCIÓN LUEGO DEL LOGIN
     const CLIENT_ID = '4c492a9b95534c7a9a022fdc563c4f71';
-    const REDIRECT_URI = 'https://descubretuspotify.000webhostapp.com/';
+    const REDIRECT_URI = 'https://ebrss.github.io/descubre-tu-spotify/';
 
 
     const loginButton = document.getElementById('login');
