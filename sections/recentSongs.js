@@ -1,12 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Extract token from URL hash if present (OAuth redirect)
+    const getTokenFromURL = () => {
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash);
+        return params.get('access_token');
+    };
+
+    // Check if token is in URL (OAuth callback)
+    const tokenFromURL = getTokenFromURL();
+    if (tokenFromURL) {
+        sessionStorage.setItem('accessToken', tokenFromURL);
+        // Clean up URL by removing hash
+        window.history.replaceState(null, null, window.location.pathname);
+    }
     
     const accessToken = sessionStorage.getItem('accessToken');
-
 
     if (accessToken) {
         fetchRecentSongs(accessToken);
     } else {
-        console.error('Access token not found.');
+        // Redirect to login page if no token
+        window.location.href = '../index.html';
     }
 });
 
