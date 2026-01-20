@@ -32,7 +32,7 @@ const fetchRecentSongs = (token) => {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Access token not found');
+            throw new Error(`API request failed: ${response.status} ${response.statusText}`);
         }
         return response.json();
     })
