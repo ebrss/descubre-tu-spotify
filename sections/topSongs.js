@@ -53,5 +53,5 @@ const fetchTopSongs = (token, timeRange) => {
 };
 
 function periodo(term){
-    fetchTopSongs(localStorage.getItem('accessToken'), term);
+    fetchTopSongs(sessionStorage.getItem('accessToken'), term);
 }
