@@ -60,5 +60,11 @@ const fetchTopSongs = (token, timeRange) => {
 };
 
 function periodo(term){
-    fetchTopSongs(sessionStorage.getItem('accessToken'), term);
+    const accessToken = sessionStorage.getItem('accessToken');
+    if (accessToken) {
+        fetchTopSongs(accessToken, term);
+    } else {
+        // Redirect to login page if token is missing
+        window.location.href = '../index.html';
+    }
 }
