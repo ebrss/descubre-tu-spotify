@@ -7,11 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const getTokenFromURL = () => {
         const hash = window.location.hash.substring(1);
-        const params = new URLSearchParams(hash.replace(/&/g, '&'));
-    return params.get('access_token');
+        const params = new URLSearchParams(hash);
+        return params.get('access_token');
     };
-
-
 
     const fetchUserInfo = (token) => {
         fetch('https://api.spotify.com/v1/me', {
@@ -35,16 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error:', error));
     };
 
-    const accessToken = getTokenFromURL();
+    // Check if user already has a token stored
+    const storedToken = sessionStorage.getItem('accessToken');
+    if (storedToken) {
+        // User is already logged in, redirect to recent songs
+        window.location.href = 'sections/recentSongs.html';
+        return;
+    }
 
+    // Check if this is an OAuth callback with token in URL
+    const accessToken = getTokenFromURL();
     if (accessToken) {
         sessionStorage.setItem('accessToken', accessToken);
         fetchUserInfo(accessToken);
-        window.location = `sections/recentSongs.html`;
-    } else {
-        console.error('Access token not found in URL');
+        window.location.href = 'sections/recentSongs.html';
+        return;
     }
 
+    // User is not logged in, show login button
     loginButton.addEventListener('click', () => {
         window.location = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${scopes}&response_type=token&show_dialog=true`;
     });

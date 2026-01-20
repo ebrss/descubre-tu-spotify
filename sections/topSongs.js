@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetchTopSongs(sessionStorage.getItem('accessToken'), 'medium_term');
+    const accessToken = sessionStorage.getItem('accessToken');
+    
+    if (accessToken) {
+        fetchTopSongs(accessToken, 'medium_term');
+    } else {
+        // Redirect to login page if no token
+        window.location.href = '../index.html';
+    }
 });
 
 const fetchTopSongs = (token, timeRange) => {
