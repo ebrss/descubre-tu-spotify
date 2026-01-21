@@ -15,12 +15,22 @@ const fetchTopSongs = (token, timeRange) => {
             'Authorization': `Bearer ${token}`
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+        }
+        return response.json();
+    })
     .then(data => {
         const welcomeTitle = document.getElementById('welcome-title');
         const songList = document.getElementById('song-list');
         welcomeTitle.textContent = `Tus canciones más escuchadas`;
         songList.innerHTML = "";
+
+        if (!data.items || data.items.length === 0) {
+            songList.innerHTML = '<p>No top songs found.</p>';
+            return;
+        }
 
         data.items.forEach(item => {
             const cardDiv = document.createElement('div');
@@ -56,7 +66,11 @@ const fetchTopSongs = (token, timeRange) => {
             songList.appendChild(cardDiv);
         });
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        console.error('Error:', error);
+        sessionStorage.removeItem('accessToken');
+        window.location.href = '../index.html';
+    });
 };
 
 function periodo(term){
